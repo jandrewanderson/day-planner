@@ -1,0 +1,61 @@
+body {
+    background-color: rgb(199, 230, 255); 
+    color: rgb(37, 37, 37);
+    text-align: center;
+}
+
+#body {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+header {
+    border-bottom: 1.5rem solid black;
+    padding: 1rem;
+}
+
+#header-child {
+    font-weight: 900;
+}
+
+
+/* SIMPLY USED FOR VISUALIZING THE PAGE */
+.col-10 {
+    outline: 1px solid black;
+}
+.col-8 {
+    outline: 1px solid black;
+}
+.col-2 {
+    outline: 1px solid black;
+}
+.col-1 {
+    outline: 1px solid black;
+}
+/* SIMPLY USED FOR VISUALIZING THE PAGE */
+
+main {
+    height: 100vh;
+}
+
+#main-child {
+    height: 100vh;
+    margin-top: 1.5rem;
+    /* outline: 5px solid black; */
+}
+
+#planner-template {
+    margin-bottom: 1rem;
+}
+
+#times-template #insert-times {
+
+}
+
+#entries-template #insert-entries {
+
+}
+
+#saves-template #insert-saves {
+    
+}
