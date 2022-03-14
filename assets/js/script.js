@@ -8,15 +8,13 @@ var insertPlanner = $('#insert-planner');
 var insertTimes = $('#insert-times'); //this is the section where the times of day will be inserted.
 var insertEntries = $('#insert-entries'); //this is the section where the newSection areas will be inserted.
 var insertSaves = $('#insert-saves'); //this is the section where the save buttons will be inserted.
-
-//vars to popluate the body with the time, a box allowing the user to enter in their daily plans, and a save button
 var newSection = $("<section>"); //made just in case it is needed later.
-// var setTime = $("<div>"); //creates an area where the time of day will be displayed
-// var eventForm = $("<input>"); //will create an area where to user will be able to enter in their plans
-// var saveBtn = $("<button>"); //this will create a button when clicked will save the plans to local storage
-// var col1 = $('<div>');
-// var col2 = $('<div>');
-// var br = $('<br>');
+
+//TODO: make the save buttons store what is written to the local storage independantly of the other lines.
+    //perhaps make a function that will turn entered items into an <li>.
+
+//TODO: add the time function that will display passed times in grey, current time in red and time to come in green.
+    //build classes in css for each of these 3 scenarios. still need red and green.
 
 //array for the times of day
 var times = [
@@ -40,6 +38,7 @@ var times = [
     
 //function to add each of the sections
 function addSections(){
+    //vars to popluate the body with the time, a box allowing the user to enter in their daily plans, and a save button
     var nextRow = $('<form>');
     var setTime = $("<div>"); //creates an area where the time of day will be displayed
     var eventForm = $("<input>"); //will create an area where to user will be able to enter in their plans
