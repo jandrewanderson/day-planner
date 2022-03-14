@@ -20,7 +20,7 @@ header {
 
 
 /* SIMPLY USED FOR VISUALIZING THE PAGE */
-.col-10 {
+/* .col-10 {
     outline: 1px solid black;
 }
 .col-8 {
@@ -31,7 +31,7 @@ header {
 }
 .col-1 {
     outline: 1px solid black;
-}
+} */
 /* SIMPLY USED FOR VISUALIZING THE PAGE */
 
 main {
@@ -45,17 +45,78 @@ main {
 }
 
 #planner-template {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    min-height: 5rem;
 }
 
-#times-template #insert-times {
-
+#times-template, #insert-times {
+    background-color: rgb(235, 235, 235);
+    border-right: 1px dashed black;
+    border-bottom: 1px dashed black;
+    border-top: 1px dashed black;
+    border-radius: 5px;
 }
 
-#entries-template #insert-entries {
-
-}
-
-#saves-template #insert-saves {
+/* #times-template {
     
+} */
+
+#entries-template, #insert-entries {
+    background-color: rgb(200, 200, 200);
+    outline: 1px solid black;
+    border-radius: 5px;
+}
+
+#entries-template {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#saves-template, #insert-saves {
+    background-color: rgba(115, 255, 0, 0.294);
+    outline: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* #saves-template {
+    
+} */
+
+#insert-planner {
+    /* outline: 1px solid black; */
+    min-height: 5rem;
+}
+
+.insert-times {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(235, 235, 235);
+    border-right: 1px dashed black;
+    border-bottom: 1px dashed black;
+    border-top: 1px dashed black;
+    border-radius: 5px;
+    min-height: 5rem;
+}
+
+.insert-entries {
+    background-color: rgb(200, 200, 200);
+    outline: 1px solid black;
+    border-radius: 5px;
+    min-height: 5rem;
+}
+
+.insert-saves {
+    background-color: rgba(115, 255, 0, 0.294);
+    outline: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 5rem;
 }
