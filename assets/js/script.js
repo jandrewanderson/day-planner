@@ -51,6 +51,7 @@ function addSections(){
         nextRow.attr('id', 'insert-planner');
         setTime.addClass('col-1 insert-times');
         eventForm.addClass('col-8 insert-entries');
+        eventForm.attr('type=text');
         saveBtn.addClass('col-1 insert-saves');
         col1.addClass('col-1');
         col2.addClass('col-1');
@@ -65,8 +66,16 @@ function addSections(){
         nextRow.append(col2);
         nextRow.append(br);
     // }
+    function formSubmit() {
+        // var liEl = $('<li>');
+        // event.preventDefault();
+        eventForm.append($('<li>').append(eventForm.val()));
+
+    }
+    nextRow.on('submit', formSubmit)
 }
 addSections()
+
 
 // for (var i = 0; i < 15; i++) {
 //     addSections();
