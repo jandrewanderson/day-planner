@@ -30,30 +30,104 @@ var times = [
     '8pm',
     '9pm',
 ];
+var tid = 0
+// var plannerTable = `
 
-var plannerTable = `
+//     <form id="insert-planner" class="row">
+
+//         <div id="insert-times" class="col-2"><p class="time">${addTable(tid)}</p></div>
+
+//         <input id="insert-entries" class="col-9 input" type="text" name="enter-plans" placeholder="Type Plans Here"></input>
+
+//         <button id="insert-saves" class="col-1">💾</button>
+
+//     </form>
+// `
+var plannerTable;
+function addTable(){
+    for (var i=0; i<times.length; i++){
+    plannerTable = `
 
     <form id="insert-planner" class="row">
 
-        <div class="col-1"></div>
+        <div id="insert-times" class="col-2"><p class="time">${times[i]}</p></div>
 
-        <div id="insert-times" class="col-1"><p></p></div>
+        <input id="${times[i]}" class="col-9 insert-entries input" type="text" name="enter-plans" placeholder="Type Plans Here"></input>
 
-        <input id="insert-entries" class="col-8 input" type="text" name="enter-plans" placeholder="Type Plans Here"></input>
-
-        <button id="insert-saves" class="col-1">💾</button>
-
-        <div class="col-1"></div>
+        <button id="insert-saves" class="col-1" inputvalue=${times[i]}>💾</button>
 
     </form>
 `
-
-function addTable(){
-    for (var i=0; i<times.length; i++)
-    mainChild.append(plannerTable);
-    $('p').text(times[i]);
+        console.log("hello")
+        mainChild.append(plannerTable);
+        setTask(times[i]);
+    }
+    
 }
 addTable();
+savedTasks();
+
+
+// function saveTask(){
+//     for (var i=0; i<times.length; i++){
+//         $('#insert-saves').on('click', function(event){
+//             event.preventDefault();
+//             var id = $(this).attr('inputvalue')
+//             var entry = $(document.getElementById(times[i]));
+//             console.log(entry.val())
+//             // console.log($(this).parent);
+//             console.log(id);
+//             // localStorage.setItem('entry', entry);
+//             // localStorage.getItem(entry);
+//         })
+//     }
+    
+// }
+function setTask(id){
+    for (var i=0; i<times.length; i++){
+        $('#insert-saves').on('click', function(event){
+            event.preventDefault();
+            var id = $(this).attr('inputvalue')
+            var text = $(document.getElementById(`${times[i]}`));
+            console.log(text.val());
+            localStorage.setItem('text', text);
+        });
+    }
+    
+}
+function savedTasks(event){
+    
+    $('#insert-saves').on('click', function(event){
+        event.preventDefault();
+        $('#8am').val(localStorage.getItem('8am'));
+    });
+}
+
+// function addTable(tid){
+//     for (var i=0; i<times.length; i++){
+//         mainChild.append(plannerTable);
+//         $('.time').text(times[i]);
+//         console.log(times[i]);
+//         var time = times[i];
+//     }
+//     return time;
+//     timerBlock();
+//     // times.forEach(time=>{
+//     //     console.log(time);
+//     //     mainChild.append(plannerTable);
+//     //     $('.time').text(time)
+//     // })
+// }
+// // addTable(tid);
+
+// // tid++
+// function timerBlock(){
+    
+//     for (var i=0; i<times.length; i++){
+//         tid+=1
+//         console.log(tid);
+//     }
+// }
 
 
 
