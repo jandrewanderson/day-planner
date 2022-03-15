@@ -6,31 +6,47 @@ var mainChild = $('#main-child');
 //this is the main id for inserting the tables
 var insertPlanner = $('#insert-planner');
 
+//show todays date at the top
+window.setInterval(function () {
+    $('#date').html(moment().format('ddd MM/DD/y H:mm:ss'))
+}, 1000);
 
 //TODO: make the save buttons store what is written to the local storage independantly of the other lines.
     //perhaps make a function that will turn entered items into an <li>.
 
-//TODO: add the time function that will display passed times in grey, current time in red and time to come in green.
-    //build classes in css for each of these 3 scenarios. still need red and green.
-
 //array for the times of day
 var times = [
-    '8am',
-    '9am',
-    '10am',
-    '11am',
-    '12pm',
-    '1pm',
-    '2pm',
-    '3pm',
-    '4pm',
-    '5pm',
-    '6pm',
-    '7pm',
-    '8pm',
-    '9pm',
+    '08:00',
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    '19:00',
+    '20:00',
+    '21:00',
 ];
-var tid = 0
+
+    // '8am',
+    // '9am',
+    // '10am',
+    // '11am',
+    // '12pm',
+    // '1pm',
+    // '2pm',
+    // '3pm',
+    // '4pm',
+    // '5pm',
+    // '6pm',
+    // '7pm',
+    // '8pm',
+    // '9pm',
+
 // var plannerTable = `
 
 //     <form id="insert-planner" class="row">
@@ -52,55 +68,48 @@ function addTable(){
 
         <div id="insert-times" class="col-2"><p class="time">${times[i]}</p></div>
 
-        <input id="${times[i]}" class="col-9 insert-entries input" type="text" name="enter-plans" placeholder="Type Plans Here"></input>
+        <input id="insert-entries" class="col-9 input" type="text" name="enter-plans" placeholder="Type Plans Here"></input>
 
-        <button id="insert-saves" class="col-1" inputvalue=${times[i]}>💾</button>
+        <button id="insert-saves" class="col-1">💾</button>
 
     </form>
-`
-        console.log("hello")
+    `
         mainChild.append(plannerTable);
-        setTask(times[i]);
     }
-    
+    //this function will change the class to display the colors to red if current time matches the hour displayed, green if current time is before number dispalyed, and grey if current time is after number displayed.
+    function beforeAfter(){
+        var currentTime = moment().hour();
+        console.log(currentTime);
+        var parseTimes = parseInt(times);
+        console.log(parseTimes);
+        if (parseInt(times) === parseInt(moment().hour())){
+            $('#insert.entries').addClass('now');
+        } else if(parseInt(times) > moment().hour()){
+            $('#insert.entries').addClass('later');
+        } else if (parseInt(times) < moment().hour()){
+            $('#insert.entries').addClass('before');
+        }
+    }
+    beforeAfter();
 }
 addTable();
-savedTasks();
+saveTask();
 
-
-// function saveTask(){
-//     for (var i=0; i<times.length; i++){
-//         $('#insert-saves').on('click', function(event){
-//             event.preventDefault();
-//             var id = $(this).attr('inputvalue')
-//             var entry = $(document.getElementById(times[i]));
-//             console.log(entry.val())
-//             // console.log($(this).parent);
-//             console.log(id);
-//             // localStorage.setItem('entry', entry);
-//             // localStorage.getItem(entry);
-//         })
-//     }
-    
-// }
-function setTask(id){
-    for (var i=0; i<times.length; i++){
-        $('#insert-saves').on('click', function(event){
-            event.preventDefault();
-            var id = $(this).attr('inputvalue')
-            var text = $(document.getElementById(`${times[i]}`));
-            console.log(text.val());
-            localStorage.setItem('text', text);
-        });
-    }
-    
-}
-function savedTasks(event){
+function saveTask(){
     
     $('#insert-saves').on('click', function(event){
         event.preventDefault();
-        $('#8am').val(localStorage.getItem('8am'));
-    });
+        var entry = $('#insert-entries').val();
+        console.log(entry)
+        localStorage.setItem('entry', entry);
+        localStorage.getItem(entry);
+    })
+}
+
+function savedTasks(){
+    for (var i=0; i<localStorage.length; i++){
+
+    }
 }
 
 // function addTable(tid){

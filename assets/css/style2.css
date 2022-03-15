@@ -111,6 +111,27 @@ main {
     min-height: 5rem;
 }
 
+.now {
+    background-color: rgb(196, 99, 99);
+    outline: 1px solid black;
+    border-radius: 5px;
+    min-height: 5rem;
+}
+
+.later {
+    background-color: rgb(110, 201, 67);
+    outline: 1px solid black;
+    border-radius: 5px;
+    min-height: 5rem;
+}
+
+.before {
+    background-color: rgb(195, 195, 195);
+    outline: 1px solid black;
+    border-radius: 5px;
+    min-height: 5rem;
+}
+
 #insert-saves {
     background-color: rgba(115, 255, 0, 0.294);
     outline: 1px solid black;
