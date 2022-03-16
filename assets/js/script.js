@@ -32,50 +32,51 @@ var times = [
     '21:00',
 ];
 
-    // '8am',
-    // '9am',
-    // '10am',
-    // '11am',
-    // '12pm',
-    // '1pm',
-    // '2pm',
-    // '3pm',
-    // '4pm',
-    // '5pm',
-    // '6pm',
-    // '7pm',
-    // '8pm',
-    // '9pm',
-
-// var plannerTable = `
-
-//     <form id="insert-planner" class="row">
-
-//         <div id="insert-times" class="col-2"><p class="time">${addTable(tid)}</p></div>
-
-//         <input id="insert-entries" class="col-9 input" type="text" name="enter-plans" placeholder="Type Plans Here"></input>
-
-//         <button id="insert-saves" class="col-1">💾</button>
-
-//     </form>
-// `
 var plannerTable;
 function addTable(){
     for (var i=0; i<times.length; i++){
     plannerTable = `
-
     <form id="insert-planner" class="row">
-
         <div id="insert-times" class="col-2"><p class="time">${times[i]}</p></div>
-
         <input id="insert-entries" class="col-9 input" type="text" name="enter-plans" placeholder="Type Plans Here"></input>
-
         <button id="insert-saves" class="col-1">💾</button>
-
     </form>
     `
-        mainChild.append(plannerTable);
-    }
+    var form = $("<form></form>")
+        .attr("id", "insert-planner")
+        .addClass("row")
+    var HourContainer = $("<div></div>")
+        .attr("id", "insert-times")
+        .addClass("col-2");
+    var HourP = $("<p></p>").text(times[i])
+        .addClass("time");
+    
+    var input = $("<input/>")
+        .attr("id", "insert-entries")
+        .attr("id", times[i])
+        .addClass("col-9")
+        .addClass("input");
+    var saveBtn = $("<button></button>").text("💾")
+        .attr("id", "insert-saves")
+        .attr("inputVal", times[i])
+        .addClass("col-1");
+    HourContainer.append(HourP);
+    form.append(HourContainer);
+    form.append(input);
+    form.append(saveBtn);
+    mainChild.append(form);
+    
+}
+$('button').on('click', function(event){
+    event.preventDefault();
+    inputVal = $(this).attr("inputVal");
+    console.log(inputVal);
+    inputtedTask = $(document.getElementById(inputVal))
+    console.log(inputtedTask.val());
+    localStorage.setItem(`${inputVal}`, inputtedTask.val())
+    savedTasks();
+})
+}
     //this function will change the class to display the colors to red if current time matches the hour displayed, green if current time is before number dispalyed, and grey if current time is after number displayed.
     function beforeAfter(){
         var currentTime = moment().hour();
@@ -91,7 +92,7 @@ function addTable(){
         }
     }
     beforeAfter();
-}
+
 addTable();
 saveTask();
 
@@ -112,73 +113,6 @@ function savedTasks(){
     }
 }
 
-// function addTable(tid){
-//     for (var i=0; i<times.length; i++){
-//         mainChild.append(plannerTable);
-//         $('.time').text(times[i]);
-//         console.log(times[i]);
-//         var time = times[i];
-//     }
-//     return time;
-//     timerBlock();
-//     // times.forEach(time=>{
-//     //     console.log(time);
-//     //     mainChild.append(plannerTable);
-//     //     $('.time').text(time)
-//     // })
-// }
-// // addTable(tid);
-
-// // tid++
-// function timerBlock(){
-    
-//     for (var i=0; i<times.length; i++){
-//         tid+=1
-//         console.log(tid);
-//     }
-// }
-
-
-
-// //function to add each of the sections
-// function addSections(){
-//     //vars to popluate the body with the time, a box allowing the user to enter in their daily plans, and a save button
-//     var nextRow = $('<form>');
-//     var setTime = $("<div>"); //creates an area where the time of day will be displayed
-//     var eventForm = $("<input>"); //will create an area where to user will be able to enter in their plans
-//     var saveBtn = $("<button>"); //this will create a button when clicked will save the plans to local storage
-//     var col1 = $('<div>');
-//     var col2 = $('<div>');
-//     var br = $('<br>');
-//     // for (var i = 0; i < times.length; i++) {
-//         nextRow.addClass('row');
-//         nextRow.attr('id', 'insert-planner');
-//         setTime.addClass('col-1 insert-times');
-//         eventForm.addClass('col-8 insert-entries');
-//         eventForm.attr('type=text');
-//         saveBtn.addClass('col-1 insert-saves');
-//         col1.addClass('col-1');
-//         col2.addClass('col-1');
-//         setTime.html('8am');
-//         // setTime.text(times[i]);
-//         saveBtn.text('💾');
-//         mainChild.append(nextRow);
-//         nextRow.append(col1);
-//         nextRow.append(setTime);
-//         nextRow.append(eventForm);
-//         nextRow.append(saveBtn);
-//         nextRow.append(col2);
-//         nextRow.append(br);
-//     // }
-//     function formSubmit() {
-//         // var liEl = $('<li>');
-//         // event.preventDefault();
-//         eventForm.append($('<li>').append(eventForm.val()));
-
-//     }
-//     nextRow.on('submit', formSubmit)
-// }
-// addSections()
 
 
 
